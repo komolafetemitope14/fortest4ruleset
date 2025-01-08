@@ -1,0 +1,104 @@
+# Program to generate Fibonacci sequence, calculate factorials, and prime numbers
+
+def generate_fibonacci(n):
+    """Generates a Fibonacci sequence up to the nth term."""
+    sequence = [0, 1]
+    for i in range(2, n):
+        next_term = sequence[-1] + sequence[-2]
+        sequence.append(next_term)
+    return sequence[:n]
+
+def factorial(num):
+    """Calculates the factorial of a number."""
+    if num == 0 or num == 1:
+        return 1
+    result = 1
+    for i in range(2, num + 1):
+        result *= i
+    return result
+
+def is_prime(num):
+    """Checks if a number is a prime number."""
+    if num <= 1:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+def generate_primes(limit):
+    """Generates a list of prime numbers up to a given limit."""
+    primes = []
+    for num in range(2, limit + 1):
+        if is_prime(num):
+            primes.append(num)
+    return primes
+
+def main():
+    """Main function to execute the program."""
+    print("Welcome to the Programmatic Text Example!\n")
+
+    # Fibonacci Sequence
+    print("--- Fibonacci Sequence ---")
+    n = int(input("Enter the number of terms for Fibonacci sequence: "))
+    fib_sequence = generate_fibonacci(n)
+    print(f"Fibonacci sequence up to {n} terms: {fib_sequence}\n")
+
+    # Factorial Calculation
+    print("--- Factorial Calculation ---")
+    num = int(input("Enter a number to calculate its factorial: "))
+    fact = factorial(num)
+    print(f"Factorial of {num}: {fact}\n")
+
+    # Prime Numbers
+    print("--- Prime Number Generation ---")
+    limit = int(input("Enter the upper limit to generate prime numbers: "))
+    primes = generate_primes(limit)
+    print(f"Prime numbers up to {limit}: {primes}\n")
+
+    print("Thank you for using the program!")
+
+if __name__ == "__main__":
+    main()
+
+# Extended Functionality
+
+def gcd(a, b):
+    """Finds the greatest common divisor (GCD) of two numbers."""
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    """Finds the least common multiple (LCM) of two numbers."""
+    return abs(a * b) // gcd(a, b)
+
+def power(base, exponent):
+    """Calculates the power of a number."""
+    return base ** exponent
+
+def extended_main():
+    """Additional functionality for the program."""
+    print("\n--- Extended Functionality ---")
+
+    # GCD and LCM
+    print("--- GCD and LCM ---")
+    a = int(input("Enter the first number: "))
+    b = int(input("Enter the second number: "))
+    gcd_result = gcd(a, b)
+    lcm_result = lcm(a, b)
+    print(f"GCD of {a} and {b}: {gcd_result}")
+    print(f"LCM of {a} and {b}: {lcm_result}\n")
+
+    # Power Calculation
+    print("--- Power Calculation ---")
+    base = int(input("Enter the base number: "))
+    exponent = int(input("Enter the exponent: "))
+    power_result = power(base, exponent)
+    print(f"{base} raised to the power of {exponent}: {power_result}\n")
+
+    print("Extended functionality executed successfully!")
+
+if __name__ == "__main__":
+    main()
+    extended_main()
